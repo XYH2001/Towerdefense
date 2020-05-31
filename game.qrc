@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/pictures">
+        <file>file2.jpg</file>
+        <file>file3.png</file>
+        <file>file3hover.png</file>
+        <file>file3press.png</file>
+        <file>elements.png</file>
+        <file>file4.png</file>
+        <file>vector4.jpg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,28 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+##[unreleased]
+
+##[0.0.2] - 2020-06-12
+### Added
+1.enemy类：包含getNextX(),getNextY(),move(),paintEnemy(QPainter *)函数成员和image,speed等数据成员。
+2.mw2中新增QTimer计时器以在mw2窗口显示时让敌人按一定时间出现。
+3.mw2中新增paintGameworld()以初始化游戏世界。
+4.mw2中新增EnemyMove()函数以实现敌人移动后重绘图像。
+5.object类中新增getImage()函数以获得各个类中对象对应的图片。
+
+### Changed
+1.gameworld中draw()函数，改为将所有的对象绘制在pixmap上后以便在主窗口中显示。
+2.mw2中paintEvent(QPaintEvent *)函数，改为对pixmap的总的绘制，同时新增对敌人的动态绘制和在敌人到达终点时的擦除。
+
+### Removed
+1.mw2中paintEvent(QPaintEvent *)函数，将原先的背景图片的绘制过程删去，第一个版本中mw2的背景是由现成的图片用QPixmap添加的，
+在第二个版本中改为在elements.png中抠出对应元素后按坐标绘制自己想要的游戏背景以及游戏中路径，便于后面单个元素的绘制与删除。
+
+
+##[0.0.1] - 2020-05-31
+### Added
+1.gameworld,icon,object等类以及相关成员，分别实现游戏世界的初始化，图标元素的获取，物体的初始化。
+2.mainwindow,mw2两个主窗体，分别作为主界面和游戏世界的显示并实现二者间的互相切换。
+3.ui界面添加pushButton控件以实现窗口的切换。
+4.资源文件中添加background.png,elements.png,flie3.png,file3hover.png,file3press.png等图片文件。

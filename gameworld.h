@@ -5,6 +5,9 @@
 #include <vector>
 #include <string>
 #include <QPainter>
+#include "enemy.h"
+#include <QTimer>
+#include <QTime>
 
 
 class Gameworld
@@ -12,10 +15,11 @@ class Gameworld
 public:
     Gameworld();
     void initGameworld(string mapFile);
-    void show(QPainter *painter);
-    void eraseObj(int x,int y);
+    void draw(QPainter *painter);
+    void eraseObj(double x,double y);
 private:
-    vector<Object *> _objects;
+    vector<Object> _objects;
+    QPixmap _pix;
 };
 
 #endif // GAMEWORLD_H

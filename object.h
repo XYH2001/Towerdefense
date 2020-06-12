@@ -11,22 +11,19 @@ class Object
 {
 public:
     Object();
-    Object(int x,int y);
+    Object(double x,double y);
     void initObj(string type);
-    void show(QPainter *painter);
-    void setX(int x){this->_X=x;}
-    void setY(int y){this->_Y=y;}
-    int getX() const{return this->_X;}
-    int getY() const{return this->_Y;}
-    int getW() const{return this->_icon.getW();}
-    int getH() const{return this->_icon.getH();}
-    int getNextX(int direction);
-    int getNextY(int direction);
-    //virtual void onErase();
+    void setX(double x){this->_X=x;}
+    void setY(double y){this->_Y=y;}
+    double getX() const{return this->_X;}
+    double getY() const{return this->_Y;}
+    double getW() const{return this->_icon.getW();}
+    double getH() const{return this->_icon.getH();}
+    QImage getImage();
     string getObjType() const{return this->_icon.getTypeName();}
 protected:
     QImage _pict;
-    int _X,_Y;
+    double _X,_Y;
     ICON _icon;
 };
 

@@ -1,19 +1,21 @@
 #include "bullet.h"
 double Bullet::speed=10;
-
+//计算(x1,y1),(x2,y2)间的距离
 double distance(double x1,double y1,double x2,double y2){
     double d;
     d=(x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
     d=sqrt(d);
     return d;
 }
+//计算(x1,y1),(x2,y2)连线与水平线所成角度的余弦值
 double cos(double x1,double y1,double x2,double y2){
     return (x2-x1)/distance(x1,y1,x2,y2);
 }
 double sin(double x1,double y1,double x2,double y2){
     return (y2-y1)/distance(x1,y1,x2,y2);
 }
-Bullet::Bullet(double x,double y,int flag,double m,double n)
+Bullet::Bullet(double x,double y,int flag,double m,double n)//flag为标志变量，判断初始化哪一种炮塔的子弹，
+                                                            //x,y为诞生点的坐标，m,n为目标点的坐标
 {
     this->_x=x;
     this->_y=y;

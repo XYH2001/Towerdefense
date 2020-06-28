@@ -11,7 +11,7 @@
 #include <QMediaPlayer>
 #include <cmath>
 
-class Gameworld2
+class Gameworld2//第二关卡的游戏界面
 {
 public:
     Gameworld2();

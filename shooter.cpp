@@ -1,6 +1,6 @@
 #include "shooter.h"
 
-Shooter::Shooter(double x,double y,int flag)
+Shooter::Shooter(double x,double y,int flag)//初始化射手初始坐标,flag为标识，10，20，30，11，21，31分别对应三种炮塔和升级后的炮塔
 {
     this->_X=x;
     this->_Y=y;
@@ -63,14 +63,14 @@ void Shooter::paintBullet(QPainter *p){
 void Shooter::BulletMove(){
     this->_bullet->move();
 }
-void Shooter::deleteBullet(){
+void Shooter::deleteBullet(){//删除子弹，将hasShoot重置为false
     delete this->_bullet;
     this->hasShoot=false;
 }
 void Shooter::paintShooter(QPainter *p){
     p->drawImage(this->_X*64,this->_Y*64,this->image);
 }
-void Shooter::initBullet(double x, double y,int flag){
+void Shooter::initBullet(double x, double y,int flag){//初始化三种不同炮塔的不同子弹类型，同时将hasShoot置为true
     if(flag==1){
         _bullet=new Bullet(this->_X+0.5,this->_Y+0.5,1,x,y);
         this->hasShoot=true;

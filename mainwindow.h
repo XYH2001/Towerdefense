@@ -8,7 +8,7 @@
 #include "mw2.h"
 #include <QPainter>
 #include <QMediaPlayer>
-
+//Ö÷´°¿Ú
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE

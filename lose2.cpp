@@ -12,7 +12,7 @@ Lose2::Lose2(QWidget *parent) :
                                   "QPushButton:hover{border-image:url(:/pictures/file3hover.png);color:white;}"
                                   "QPushButton:pressed{border-image:url(:/pictures/file3press.png);color:white;}");
     ui->pushButton->move(190,250);
-    ui->pushButton->resize(171,161);
+    ui->pushButton->resize(171,161);//设置按钮样式表
 }
 
 Lose2::~Lose2()

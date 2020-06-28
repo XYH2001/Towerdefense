@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QPaintEvent>
-
+//关卡二的胜利界面
 namespace Ui {
 class Win2;
 }

@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
     Win2 win2;
     Lose2 lose2;
     w.show();
+    //槽函数与信号的对应
     QObject::connect(&w,SIGNAL(showMW2()),&mw2,SLOT(receiveMainWindow()));
     QObject::connect(&w,SIGNAL(showMW3()),&mw3,SLOT(receiveMainWindow()));
     QObject::connect(&w,SIGNAL(exit()),&a,SLOT(quit()));

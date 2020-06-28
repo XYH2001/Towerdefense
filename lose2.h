@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QPaintEvent>
-
+//关卡二失败后的提示界面
 namespace Ui {
 class Lose2;
 }

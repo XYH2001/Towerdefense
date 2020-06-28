@@ -2,7 +2,7 @@
 #define LOSE_H
 
 #include <QDialog>
-
+//关卡失败后的提示界面
 namespace Ui {
 class Lose;
 }

@@ -1,6 +1,6 @@
 #include "mw3.h"
 #include "ui_mw3.h"
-
+//以下的函数和MW2中类似
 MW3::MW3(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MW3)

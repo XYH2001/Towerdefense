@@ -6,7 +6,7 @@ Gameworld::Gameworld()
 {
 
 }
-void Gameworld::initGameworld(string mapFile){
+void Gameworld::initGameworld(string mapFile){//初始化关卡一游戏初始界面
     Object **p1=new Object* [3];//指针数组
     for(int i=0;i<3;i++){
         p1[i]=new Object;//每一个指针还要初始化
@@ -158,7 +158,7 @@ void Gameworld::draw(QPainter *painter){
         painter->drawPixmap(this->_objects[i]->getX()*64,this->_objects[i]->getY()*64,this->_pix);
     }  
 }
-bool Gameworld::hasObject(double x, double y){
+bool Gameworld::hasObject(double x, double y){//判断(x,y)处是否有物体，如果有则此处不能种植炮塔
     vector<Object*>::iterator it;
     it=_objects.begin();
     while(it!=_objects.end()){

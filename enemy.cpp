@@ -3,7 +3,7 @@
 #include<iostream>
 using namespace std;
 
-Enemy::Enemy(int flag,int game)
+Enemy::Enemy(int flag,int game)//flag判断生成敌人的类型，game区分两个关卡（由于两个关卡设置的敌人属性不同）
 {
     this->_X=0;
     this->_Y=2.5;
@@ -46,14 +46,14 @@ Enemy::Enemy(int flag,int game)
     }
     this->currentlife=this->life;
 }
-double Enemy::getNextX(int flag){
-    if(flag==1){
+double Enemy::getNextX(int flag){//flag区分两个关卡
+    if(flag==1){//关卡一
         if(fabs(this->_Y-2.5)<1E-6 || fabs(this->_Y-7.5)<1E-6)
             return this->_X + speed*0.1;
         else
             return this->_X;
     }
-    else if(flag==2){
+    else if(flag==2){//根据地图路径判断敌人走向，关卡二
         if(fabs(this->_X-10)<1E-6 && fabs(this->_Y-2.5)<1E-6)
             return this->_X;
         else if(fabs(this->_X-7)<1E-6 && fabs(this->_Y-4.5)<1E-6)
@@ -120,7 +120,7 @@ void Enemy::move(int flag){
 }
 void Enemy::paintEnemy(QPainter *p){
     p->drawImage(this->_X*64,this->_Y*64,this->image);
-    p->setPen(Qt::SolidLine);
+    p->setPen(Qt::SolidLine);//绘制血条
     p->setBrush(Qt::red);
     p->drawRect(this->_X*64+5,this->_Y*64-10,48,5);
     p->setBrush(Qt::green);

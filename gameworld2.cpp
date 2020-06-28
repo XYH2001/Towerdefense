@@ -4,7 +4,7 @@ Gameworld2::Gameworld2()
 {
 
 }
-void Gameworld2::initGameworld(string mapFile){
+void Gameworld2::initGameworld(string mapFile){//初始化关卡二游戏界面
     Object **p1=new Object*[2];
     for(int i=0;i<2;i++){
         p1[i]=new Object;
@@ -154,7 +154,7 @@ void Gameworld2::draw(QPainter *painter){
         painter->drawPixmap(this->_objects[i]->getX()*64,this->_objects[i]->getY()*64,this->_pix);
     }
 }
-bool Gameworld2::hasObject(double x, double y){
+bool Gameworld2::hasObject(double x, double y){//判断此处是否有物体
     vector<Object*>::iterator it;
     it=_objects.begin();
     while(it!=_objects.end()){

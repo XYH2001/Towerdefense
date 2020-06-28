@@ -1,6 +1,6 @@
 #include "win.h"
 #include "ui_win.h"
-
+//关卡一的胜利界面
 Win::Win(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Win)

@@ -1,6 +1,6 @@
 #include "win2.h"
 #include "ui_win2.h"
-
+//关卡二的胜利界面
 Win2::Win2(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Win2)

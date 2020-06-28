@@ -12,11 +12,11 @@
 #include <cmath>
 
 
-class Gameworld
+class Gameworld//第一关卡的游戏界面
 {
 public:
     Gameworld();
-    void initGameworld(string mapFile);
+    void initGameworld(string mapFile);//初始化游戏界面
     void draw(QPainter *painter);
     bool hasObject(double x,double y);
 private:

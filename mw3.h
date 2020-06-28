@@ -1,5 +1,5 @@
-#ifndef MW2_H
-#define MW2_H
+#ifndef MW3_H
+#define MW3_H
 
 #include <QMainWindow>
 #include <QPushButton>
@@ -13,19 +13,19 @@
 #include "shooter.h"
 #include "enemy.h"
 #include "object.h"
-#include "gameworld.h"
+#include "gameworld2.h"
 
 namespace Ui {
-class MW2;
+class MW3;
 }
 
-class MW2 : public QMainWindow
+class MW3 : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MW2(QWidget *parent = nullptr);
-    ~MW2();
+    explicit MW3(QWidget *parent = nullptr);
+    ~MW3();
     void paintEvent(QPaintEvent *);
     void paintGameworld();
     int n=0;//三类敌人的个数
@@ -37,29 +37,30 @@ public:
     void mousePressEvent(QMouseEvent *m);
 
 private:
-    Ui::MW2 *ui;
-    Gameworld _game;
+    Ui::MW3 *ui;
+    Gameworld2 _game;
     vector<Enemy*> _enemies;
     vector<Shooter*> _shooters;
     QTimer *timer;
     QPixmap *pixmap;
     QPainter *pt;
-    int gold=600;
+    int gold=500;
     int carrotlife=10;
 
 signals:
     void showMainWindow();
     void exit();
-    void showWin();
     void showLose();
+    void showWin();
 
 private slots:
     void on_pushButton_clicked();
     void receiveMainWindow();
     void receiveexit();
     void EnemyMove();
-    void receiveWin();
+    void receiveWin1();
+    void receiveWin2();
     void receiveLose();
 };
 
-#endif // MW2_H
+#endif // MW3_H

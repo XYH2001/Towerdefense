@@ -38,7 +38,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>320</x>
       <y>330</y>
       <width>171</width>
       <height>161</height>
@@ -59,7 +59,7 @@ color: rgb(255, 255, 255);
 </string>
     </property>
     <property name="text">
-     <string>start</string>
+     <string>start  1</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -83,6 +83,24 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>exit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>230</y>
+      <width>171</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/pictures/file3.png);
+font: 16pt &quot;Impact&quot;;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>start 2</string>
     </property>
    </widget>
   </widget>

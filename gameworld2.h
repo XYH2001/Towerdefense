@@ -1,5 +1,5 @@
-#ifndef GAMEWORLD_H
-#define GAMEWORLD_H
+#ifndef GAMEWORLD2_H
+#define GAMEWORLD2_H
 #include "object.h"
 #include "icon.h"
 #include <vector>
@@ -11,11 +11,10 @@
 #include <QMediaPlayer>
 #include <cmath>
 
-
-class Gameworld
+class Gameworld2
 {
 public:
-    Gameworld();
+    Gameworld2();
     void initGameworld(string mapFile);
     void draw(QPainter *painter);
     bool hasObject(double x,double y);
@@ -24,4 +23,4 @@ private:
     QPixmap _pix;
 };
 
-#endif // GAMEWORLD_H
+#endif // GAMEWORLD2_H

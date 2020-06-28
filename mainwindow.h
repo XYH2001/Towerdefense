@@ -7,6 +7,7 @@
 #include <QPoint>
 #include "mw2.h"
 #include <QPainter>
+#include <QMediaPlayer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,6 +24,7 @@ public:
 signals:
     void showMW2();
     void exit();
+    void showMW3();
 
 private:
     Ui::MainWindow *ui;
@@ -30,7 +32,9 @@ private:
 
 private slots:
     void receiveMW2();
-    void on_pushButton_clicked();//显示页面2
+    void receiveMW3();
+    void on_pushButton_clicked();//显示关卡1
     void on_pushButton_2_clicked();//退出界面
+    void on_pushButton_3_clicked();//显示关卡2
 };
 #endif // MAINWINDOW_H

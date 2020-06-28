@@ -4,11 +4,15 @@
         <file>file3.png</file>
         <file>file3hover.png</file>
         <file>file3press.png</file>
-        <file>file4.png</file>
-        <file>vector4.jpg</file>
         <file>pause.png</file>
         <file>background.png</file>
         <file>elements.png</file>
-        <file>enemy1.png</file>
+        <file>background2.png</file>
+        <file>lose.jpg</file>
+        <file>win.jpg</file>
+    </qresource>
+    <qresource prefix="/music">
+        <file>bgm.mp3</file>
+        <file>eat.mp3</file>
     </qresource>
 </RCC>

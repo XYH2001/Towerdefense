@@ -1,15 +1,9 @@
-#include "mw2.h"
-#include "ui_mw2.h"
-#include "mainwindow.h"
-#include "icon.h"
-#include <map>
-#include <iostream>
-#include <cmath>
-using namespace std;
+#include "mw3.h"
+#include "ui_mw3.h"
 
-MW2::MW2(QWidget *parent) :
+MW3::MW3(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MW2)
+    ui(new Ui::MW3)
 {
     ui->setupUi(this);
     setFixedSize(1200,744);
@@ -22,12 +16,13 @@ MW2::MW2(QWidget *parent) :
     timer=new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(EnemyMove()));
 
-    pixmap=new QPixmap(":/pictures/background.png");
+    pixmap=new QPixmap(":/pictures/background2.png");
     pt=new QPainter(pixmap);
     _game.initGameworld("");
     paintGameworld();
 }
-MW2::~MW2()
+
+MW3::~MW3()
 {
     pt->end();
     delete ui;
@@ -36,19 +31,14 @@ MW2::~MW2()
     delete pt;
 }
 
-double dist(double x1,double y1,double x2,double y2){
+double d(double x1,double y1,double x2,double y2){
     double d;
     d=(x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
     d=sqrt(d);
     return d;
 }
 
-void MW2::on_pushButton_clicked(){
-    this->hide();
-    emit showMainWindow();
-}
-
-void MW2::receiveMainWindow(){
+void MW3::receiveMainWindow(){
     this->show();
     QMediaPlayer *player=new QMediaPlayer;
     player->setMedia(QUrl("qrc:/music/bgm.mp3"));
@@ -56,17 +46,17 @@ void MW2::receiveMainWindow(){
     player->play();
     timer->start(100);
 }
-
-void MW2::receiveexit(){
+void MW3::receiveexit(){
     emit exit();
 }
-void MW2::receiveWin(){
+void MW3::receiveLose(){
     this->hide();
 }
-void MW2::receiveLose(){
+void MW3::on_pushButton_clicked(){
     this->hide();
+    emit showMainWindow();
 }
-void MW2::paintEvent(QPaintEvent *){
+void MW3::paintEvent(QPaintEvent *){
     QPainter *p=new QPainter(this);
     p->drawPixmap(0,0,this->width(),this->height(),*pixmap);
     for(int i=0;i<n;i++){
@@ -83,29 +73,29 @@ void MW2::paintEvent(QPaintEvent *){
     p->setFont(font1);
     p->drawText(5.4*64,0.75*64,QString("%1").arg(this->gold));
     p->setFont(font2);
-    p->drawText(16.5*64,7*64,QString("%1").arg(this->carrotlife));
+    p->drawText(18*64,5.4*64,QString("%1").arg(this->carrotlife));
 
     delete p;
 }
-void MW2::paintGameworld(){
+void MW3::paintGameworld(){
     this->_game.draw(pt);
 }
-void MW2::EnemyMove(){
+void MW3::EnemyMove(){
     flag++;
     n=this->_enemies.size();
-    if(n1<8&&flag==10){
+    if(n1<10&&flag==10){
         Enemy *e=new Enemy(1,1);
         this->_enemies.push_back(e);
         flag=0;
         n1++;
     }
-    if(flag==210 && n2<10){
+    if(flag==210 && n2<15){
         Enemy *e=new Enemy(2,1);
         this->_enemies.push_back(e);
         flag=200;
         n2++;
     }
-    if(flag==360 && n3<12){
+    if(flag==360 && n3<20){
         Enemy *e=new Enemy(3,1);
         this->_enemies.push_back(e);
         flag=350;
@@ -113,7 +103,7 @@ void MW2::EnemyMove(){
     }
     n=this->_enemies.size();
     for(int i=0;i<n;i++){
-        if(fabs(this->_enemies[i]->getX()-17)<1E-6&&fabs(this->_enemies[i]->getY()-7.5)<1E-6){
+        if(fabs(this->_enemies[i]->getX()-15.5)<1E-6&&fabs(this->_enemies[i]->getY()-5.5)<1E-6){
             QMediaPlayer *player=new QMediaPlayer;
             player->setMedia(QUrl("qrc:/music/eat.mp3"));
             player->setVolume(60);
@@ -129,7 +119,7 @@ void MW2::EnemyMove(){
             it=this->_enemies.erase(it);
             continue;
         }
-        this->_enemies[i]->move(1);
+        this->_enemies[i]->move(2);
     }
     n=this->_enemies.size();
     if(n>0){
@@ -137,14 +127,14 @@ void MW2::EnemyMove(){
         e=_enemies.begin();
         for(int i=0;i<l;i++){
             _shooters[i]->flag++;
-            if(!_shooters[i]->ifhasShoot() && _shooters[i]->flag==4){
+            if(!_shooters[i]->ifhasShoot() && _shooters[i]->flag==6){
                 n=this->_enemies.size();
                 _shooters[i]->flag=0;
                 if(n>0){
                     _shooters[i]->target=0;
                     e=_enemies.begin();
                     while(e!=_enemies.end()){
-                        if(dist(_shooters[i]->getX()+0.5,_shooters[i]->getY()+0.5,(*e)->getX()+0.5,(*e)->getY()+0.5)<_shooters[i]->getRadius()){
+                        if(d(_shooters[i]->getX()+0.5,_shooters[i]->getY()+0.5,(*e)->getX()+0.5,(*e)->getY()+0.5)<_shooters[i]->getRadius()){
                             if(_shooters[i]->getType()=="shooter10"||_shooters[i]->getType()=="shooter11")
                                 _shooters[i]->initBullet((*e)->getX()+0.5,(*e)->getY()+0.5,1);
                             else if(_shooters[i]->getType()=="shooter20"||_shooters[i]->getType()=="shooter21")
@@ -172,7 +162,7 @@ void MW2::EnemyMove(){
                     }
                     _shooters[i]->target=0;
              }
-            else if(_shooters[i]->ifhasShoot() && dist(_shooters[i]->getX()+0.5,_shooters[i]->getY()+0.5,_shooters[i]->getBulletX()+0.5,_shooters[i]->getBulletY()+0.5)>_shooters[i]->getRadius()){
+            else if(_shooters[i]->ifhasShoot() && d(_shooters[i]->getX()+0.5,_shooters[i]->getY()+0.5,_shooters[i]->getBulletX()+0.5,_shooters[i]->getBulletY()+0.5)>_shooters[i]->getRadius()){
                 _shooters[i]->deleteBullet();
                 _shooters[i]->flag=0;
                 _shooters[i]->target=0;
@@ -189,13 +179,13 @@ void MW2::EnemyMove(){
         }
     }
     n=this->_enemies.size();
-    if(n==0 && this->carrotlife>0 && n3==12){
+    if(n==0 && this->carrotlife>0 && n3==20){
         emit showWin();
         timer->stop();
     }
     update();
 }
-void MW2::keyPressEvent(QKeyEvent *e){
+void MW3::keyPressEvent(QKeyEvent *e){
     if(e->key()==Qt::Key_1)
         shooteridx=1;
     else if(e->key()==Qt::Key_2)
@@ -207,7 +197,7 @@ void MW2::keyPressEvent(QKeyEvent *e){
     else if(e->key()==Qt::Key_R)
         shooteridx=-1;
 }
-void MW2::mousePressEvent(QMouseEvent *e){
+void MW3::mousePressEvent(QMouseEvent *e){
     int ex=e->x()/64;
     int ey=e->y()/64;
     double x=ex;
@@ -288,4 +278,14 @@ void MW2::mousePressEvent(QMouseEvent *e){
     l=_shooters.size();
     update();
 }
-
+void MW3::receiveWin1(){
+    this->show();
+    QMediaPlayer *player=new QMediaPlayer;
+    player->setMedia(QUrl("qrc:/music/bgm.mp3"));
+    player->setVolume(25);
+    player->play();
+    timer->start(100);
+}
+void MW3::receiveWin2(){
+    this->hide();
+}

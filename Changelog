@@ -1,0 +1,42 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+##[unreleased]
+
+##[0.0.3] - 2020-06-28
+###Added
+1.Gameworld2类：此为关卡二的游戏界面，实现函数与GameWorld中的函数类似。
+2.MW3类：此为关卡二的ui界面，其中实现了keyPressEvent,mousePressEvent,paintGameworld等函数，还包括信号和槽函数，用于界面切换。
+3.Shooter类：此为炮塔功能实现类，其中包含paintBullet,initBullet,deleteBullet,paintShooter等重要函数，
+主要实现炮塔的初始化、种植、拆除、升级和发射子弹的功能
+4.Bullet类：此为实现子弹运动和初始化和子弹移动功能的类，ifGetTarget为判断子弹是否到达目标点的函数。
+5.Win,Win2,Lose,Lose2等ui界面类：主要是为实现各界面的切换和提示功能。
+6.MW2类：其中新增keyPressEvent,mousePressEvent函数，实现用户和界面交互，通过键盘和鼠标实现炮塔的种植和升级等功能。
+
+##Changed
+1.MW2类：其中更改了槽函数，enemyMove,paintEvent等函数，实现敌人的移动和页面的绘制。
+2.Enemy类：其中paintEneny,setlife,move等函数均根据设计的界面进行适当更改，实现三种不同类型敌人的绘制和移动。
+
+##[0.0.2] - 2020-06-12
+### Added
+1.enemy类：包含getNextX(),getNextY(),move(),paintEnemy(QPainter *)函数成员和image,speed等数据成员。
+2.mw2中新增QTimer计时器以在mw2窗口显示时让敌人按一定时间出现。
+3.mw2中新增paintGameworld()以初始化游戏世界。
+4.mw2中新增EnemyMove()函数以实现敌人移动后重绘图像。
+5.object类中新增getImage()函数以获得各个类中对象对应的图片。
+
+### Changed
+1.gameworld中draw()函数，改为将所有的对象绘制在pixmap上后以便在主窗口中显示。
+2.mw2中paintEvent(QPaintEvent *)函数，改为对pixmap的总的绘制，同时新增对敌人的动态绘制和在敌人到达终点时的擦除。
+
+### Removed
+1.mw2中paintEvent(QPaintEvent *)函数，将原先的背景图片的绘制过程删去，第一个版本中mw2的背景是由现成的图片用QPixmap添加的，
+在第二个版本中改为在elements.png中抠出对应元素后按坐标绘制自己想要的游戏背景以及游戏中路径，便于后面单个元素的绘制与删除。
+
+
+##[0.0.1] - 2020-05-31
+### Added
+1.gameworld,icon,object等类以及相关成员，分别实现游戏世界的初始化，图标元素的获取，物体的初始化。
+2.mainwindow,mw2两个主窗体，分别作为主界面和游戏世界的显示并实现二者间的互相切换。
+3.ui界面添加pushButton控件以实现窗口的切换。
+4.资源文件中添加background.png,elements.png,flie3.png,file3hover.png,file3press.png等图片文件。
